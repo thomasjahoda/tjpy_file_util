@@ -3,7 +3,7 @@ import os
 import stat
 from pathlib import Path
 
-from tj_file_util.user_friendly_assertion import assert_path_is_file
+from tjpy_file_util.user_friendly_assertion import assert_path_is_file
 
 _logger = logging.getLogger(__name__)
 
