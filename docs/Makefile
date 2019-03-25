@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = tj_file_util
+SPHINXPROJ    = tjpy_file_util
 SOURCEDIR     = .
 BUILDDIR      = _build
 

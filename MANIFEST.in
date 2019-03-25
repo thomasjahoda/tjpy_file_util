@@ -4,7 +4,7 @@ include docs/history.rst
 include LICENSE
 include README.rst
 
-recursive-include tj_file_util *
+recursive-include tjpy_file_util *
 recursive-include requirements *
 recursive-include tests *
 recursive-exclude * __pycache__
