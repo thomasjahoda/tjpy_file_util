@@ -12,7 +12,7 @@ To install Personal File Utility Library, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install tj_file_util
+    $ pip install tjpy_file_util
 
 This is the preferred method to install Personal File Utility Library, as it will always install the most recent stable release.
 
@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/thomasjahoda/tj_file_util
+    $ git clone git://github.com/thomasjahoda/tjpy_file_util
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/thomasjahoda/tj_file_util/tarball/master
+    $ curl  -OL https://github.com/thomasjahoda/tjpy_file_util/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/thomasjahoda/tj_file_util
-.. _tarball: https://github.com/thomasjahoda/tj_file_util/tarball/master
+.. _Github repo: https://github.com/thomasjahoda/tjpy_file_util
+.. _tarball: https://github.com/thomasjahoda/tjpy_file_util/tarball/master

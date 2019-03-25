@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/thomasjahoda/tj_file_util/issues.
+Report bugs at https://github.com/thomasjahoda/tjpy_file_util/issues.
 
 If you are reporting a bug, please include:
 
@@ -45,7 +45,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/thomasjahoda/tj_file_util/issues.
+The best way to send feedback is to file an issue at https://github.com/thomasjahoda/tjpy_file_util/issues.
 
 If you are proposing a feature:
 
@@ -57,17 +57,17 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `tj_file_util` for local development.
+Ready to contribute? Here's how to set up `tjpy_file_util` for local development.
 
-1. Fork the `tj_file_util` repo on GitHub.
+1. Fork the `tjpy_file_util` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/tj_file_util.git
+    $ git clone git@github.com:your_name_here/tjpy_file_util.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv tj_file_util
-    $ cd tj_file_util/
+    $ mkvirtualenv tjpy_file_util
+    $ cd tjpy_file_util/
     $ python setup.py develop
 
 4. Create a branch for local development::
@@ -79,7 +79,7 @@ Ready to contribute? Here's how to set up `tj_file_util` for local development.
 5. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox::
 
-    $ flake8 tj_file_util tests
+    $ flake8 tjpy_file_util tests
     $ python setup.py test or py.test
     $ tox
 
@@ -103,7 +103,7 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
 3. The pull request should work for Python 3.6 and 3.7, and for PyPy. Check
-   https://travis-ci.org/thomasjahoda/tj_file_util/pull_requests
+   https://travis-ci.org/thomasjahoda/tjpy_file_util/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
@@ -111,7 +111,7 @@ Tips
 
 To run a subset of tests::
 
-$ py.test tests.test_tj_file_util
+$ py.test tests.test_tjpy_file_util
 
 
 Deploying

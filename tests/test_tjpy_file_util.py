@@ -1,7 +1,7 @@
 import pytest
 
 
-from tj_file_util import example
+from tjpy_file_util import example
 
 
 @pytest.fixture

@@ -4,4 +4,4 @@ Usage
 
 To use Personal File Utility Library in a project::
 
-    import tj_file_util
+    import tjpy_file_util

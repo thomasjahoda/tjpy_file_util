@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=tj_file_util
+set SPHINXPROJ=tjpy_file_util
 
 if "%1" == "" goto help
 
