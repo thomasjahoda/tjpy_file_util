@@ -96,14 +96,16 @@ class CreateTempDirectoryFor:
 
     def __enter__(self) -> Path:
         preferred_temp_dir_name = self._directory.name
-        self._temp_file = _create_temp_dir(preferred_temp_dir_name)
+        self._temp_directory = _create_temp_dir(preferred_temp_dir_name)
         if not self._directory.exists():
-            raise Exception(f"file {self._directory} does not exist")
-        self._temp_file.write_bytes(self._directory.read_bytes())
-        logging.info(f"{CreateTempFileFor.__name__}: Created temp file {str(self._temp_file)}")
-        return self._temp_file
+            raise Exception(f"directory {self._directory} does not exist")
+        self._temp_directory.rmdir()
+        shutil.copytree(str(self._directory), str(self._temp_directory))
+        logging.info(f"{CreateTempDirectoryFor.__name__}: Created temp directory {str(self._temp_directory)} "
+                     f"as copy of {self._directory}")
+        return self._temp_directory
 
     def __exit__(self, exc_type, exc_value, traceback):
         if self._cleanup:
-            logging.info(f"{CreateTempFileFor.__name__}: Removing temp file {str(self._temp_file)}")
-            self._temp_file.unlink()
+            logging.info(f"{CreateTempDirectoryFor.__name__}: Removing temp directory {str(self._temp_directory)}")
+            shutil.rmtree(self._temp_directory)
