@@ -6,7 +6,7 @@ from pathlib import Path
 _logger = logging.getLogger(__name__)
 
 
-def _create_temp_dir(preferred_name: str) -> Path:
+def create_temp_dir_with_manual_deletion_responsibility(preferred_name: str) -> Path:
     system_temp_dir = Path(tempfile.gettempdir())
     temp_dir = system_temp_dir.joinpath(preferred_name)
     if temp_dir.exists():
@@ -16,7 +16,7 @@ def _create_temp_dir(preferred_name: str) -> Path:
     return temp_dir
 
 
-def _create_temp_file(preferred_name: str) -> Path:
+def create_temp_file_with_manual_deletion_responsibility(preferred_name: str) -> Path:
     system_temp_dir = Path(tempfile.gettempdir())
     temp_file = system_temp_dir.joinpath(preferred_name)
     if temp_file.exists():
@@ -36,7 +36,7 @@ class CreateTempFileFor:
 
     def __enter__(self) -> Path:
         preferred_temp_file_name = self._file.name
-        self._temp_file = _create_temp_file(preferred_temp_file_name)
+        self._temp_file = create_temp_file_with_manual_deletion_responsibility(preferred_temp_file_name)
         if not self._file.exists():
             raise Exception(f"file {self._file} does not exist")
         self._temp_file.write_bytes(self._file.read_bytes())
@@ -57,7 +57,7 @@ class CreateTempFile:
         self._cleanup = cleanup
 
     def __enter__(self) -> Path:
-        self._temp_file = _create_temp_file(self._preferred_name)
+        self._temp_file = create_temp_file_with_manual_deletion_responsibility(self._preferred_name)
         logging.info(f"{CreateTempFileFor.__name__}: Created temp file {str(self._temp_file)}")
         return self._temp_file
 
@@ -76,7 +76,7 @@ class CreateTempDirectory:
         self._cleanup = cleanup
 
     def __enter__(self) -> Path:
-        self._temp_dir = _create_temp_dir(self._preferred_name)
+        self._temp_dir = create_temp_dir_with_manual_deletion_responsibility(self._preferred_name)
         logging.info(f"{CreateTempDirectory.__name__}: Created temp directory {str(self._temp_dir)}")
         return self._temp_dir
 
@@ -96,7 +96,7 @@ class CreateTempDirectoryFor:
 
     def __enter__(self) -> Path:
         preferred_temp_dir_name = self._directory.name
-        self._temp_directory = _create_temp_dir(preferred_temp_dir_name)
+        self._temp_directory = create_temp_dir_with_manual_deletion_responsibility(preferred_temp_dir_name)
         if not self._directory.exists():
             raise Exception(f"directory {self._directory} does not exist")
         self._temp_directory.rmdir()
