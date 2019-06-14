@@ -14,8 +14,8 @@ Personal File Utility Library
   :target: https://tjpy-file-util.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
-.. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/codecov/example-python
+.. image:: https://codecov.io/gh/thomasjahoda/tjpy_file_util/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/thomasjahoda/tjpy_file_util
   :alt: Code Coverage
 
 
