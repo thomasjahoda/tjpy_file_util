@@ -1,28 +1,45 @@
 # Config file for automatic testing at travis-ci.org
 
 language: python
-python:
-    - 3.7
-    - 3.6
 dist: xenial
 
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
+install:
+  - pip install -U tox
 
-# Command to run tests, e.g. python setup.py test
-script: tox
+stages:
+  - name: test
+  - name: deploy
+    if: tag IS present
 
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: thomasjahoda
-  password:
-    secure: LnQvoRVAbbCdoxWvS8HIwe2N2wueDaZBoh6dwXbwS9U9i/dk6HBvKqv/KLV/IRGPSozeaho6BwNNqS4GRD1+myHS5YdRZkKETCC/UUaQzUSDlta0INqDDq+pCP/bbFA7h2mj2WyAIirzL53wjKh4A4zi25t5pbsNRGpkcexEHEuKw2Kw7tcxRZ/9SnoNX45VLGLtuQQcpq1PuAFmXTG9ZTu1seFWIM3QBUrthJOZ7QBDUpeKsj6IcE5rl6S8xxFX3xC1uxW2wANDElt07arCvycqrNL7DPfE4zvYctm9kt2lkPmXLzR+NWmG2dRx2Mu/4sjbZIum9s0lCnM2ukLnvSViMFRg9xTVC+yeyYkaZJsvJSqt039qYkcg9KVllb+BlHJgJnB49MMUhkJaK/I+7JxrLLX5cgXujHp8sSBkHpTnn9BApefUDureaMxckcGt8yA2qskpJtTr4qYwtCw1Zulvt3zXdMQ2Xb+nKjzJFcN/1/EQoIercnXp8nUqvsDWlGvbil0cBvPMZvCJB0zhT31c+D4Tmn/JhUm3ANWjuzf5PAn5rC8tRgh0evF2oHzlQkSl3RQ71/8fpTvEAsjZdcDzdWlNvU6TfoG2hE9ciYNMcMib8RmG1pW9/VDFj/eG3R2EzhWoOKSWnCv+aGIKpHGcUcVAolcLqRai1UaEkTA=
-  on:
-    tags: true
-    repo: thomasjahoda/tjpy_file_util
-    python: 3.7
+jobs:
+  include:
+    # --
+    - stage: test
+      name: "tests python3.7"
+      python: 3.7
+      script: tox -e py37
+      after_success:
+        - pip install codecov
+        - codecov --file .tox/py37/coverage.xml
+    - name: "tests python3.6"
+      python: 3.6
+      script: tox -e py36
+    - name: "mypy"
+      python: 3.7
+      script: tox -e mypy
+    - name: "flake8"
+      python: 3.7
+      script: tox -e flake8
+    # --
+    - stage: deploy
+      python: 3.7
+      deploy:
+        provider: pypi
+        distributions: sdist bdist_wheel
+        user: thomasjahoda
+        password:
+          secure: LnQvoRVAbbCdoxWvS8HIwe2N2wueDaZBoh6dwXbwS9U9i/dk6HBvKqv/KLV/IRGPSozeaho6BwNNqS4GRD1+myHS5YdRZkKETCC/UUaQzUSDlta0INqDDq+pCP/bbFA7h2mj2WyAIirzL53wjKh4A4zi25t5pbsNRGpkcexEHEuKw2Kw7tcxRZ/9SnoNX45VLGLtuQQcpq1PuAFmXTG9ZTu1seFWIM3QBUrthJOZ7QBDUpeKsj6IcE5rl6S8xxFX3xC1uxW2wANDElt07arCvycqrNL7DPfE4zvYctm9kt2lkPmXLzR+NWmG2dRx2Mu/4sjbZIum9s0lCnM2ukLnvSViMFRg9xTVC+yeyYkaZJsvJSqt039qYkcg9KVllb+BlHJgJnB49MMUhkJaK/I+7JxrLLX5cgXujHp8sSBkHpTnn9BApefUDureaMxckcGt8yA2qskpJtTr4qYwtCw1Zulvt3zXdMQ2Xb+nKjzJFcN/1/EQoIercnXp8nUqvsDWlGvbil0cBvPMZvCJB0zhT31c+D4Tmn/JhUm3ANWjuzf5PAn5rC8tRgh0evF2oHzlQkSl3RQ71/8fpTvEAsjZdcDzdWlNvU6TfoG2hE9ciYNMcMib8RmG1pW9/VDFj/eG3R2EzhWoOKSWnCv+aGIKpHGcUcVAolcLqRai1UaEkTA=
+        on:
+          tags: true
+          repo: thomasjahoda/tjpy_file_util
+          python: 3.7
