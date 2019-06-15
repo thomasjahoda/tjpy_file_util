@@ -8,7 +8,7 @@ Personal File Utility Library
 
 .. image:: https://travis-ci.org/thomasjahoda/tjpy_file_util.svg?branch=master
   :target: https://travis-ci.org/thomasjahoda/tjpy_file_util
-  :CI Status
+  :alt: CI Status
 
 .. image:: https://readthedocs.org/projects/tjpy-file-util/badge/?version=latest
   :target: https://tjpy-file-util.readthedocs.io/en/latest/?badge=latest
