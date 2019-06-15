@@ -4,9 +4,9 @@ Personal File Utility Library
 
 
 .. image:: https://img.shields.io/pypi/v/tjpy_file_util.svg
-        :target: https://pypi.python.org/pypi/tjpy_file_util
+  :target: https://pypi.python.org/pypi/tjpy_file_util
 
-.. image:: https://img.shields.io/travis/thomasjahoda/tjpy_file_util.svg
+.. image:: https://travis-ci.org/thomasjahoda/tjpy_file_util.svg?branch=master
   :target: https://travis-ci.org/thomasjahoda/tjpy_file_util
   :CI Status
 
