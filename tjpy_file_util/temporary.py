@@ -39,7 +39,7 @@ def _create_temp_file(preferred_name: str) -> Path:
 
 def create_temp_directory(preferred_name: str,
                           *,
-                          cleanup: bool = True):
+                          cleanup: bool = True) -> ContextManager[Path]:
     @contextmanager
     def impl():  # https://youtrack.jetbrains.com/issue/PY-36444
         temp_directory: Optional[Path] = None
