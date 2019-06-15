@@ -13,5 +13,5 @@ def make_file_executable_if_necessary(file: Path):
     if not os.access(str(file), os.X_OK):
         mode = file.stat().st_mode
         new_mode = mode | stat.S_IEXEC
-        _logger.info(f"Making file {file} executable")
+        _logger.debug(f"Making file {file} executable")
         file.chmod(new_mode)
